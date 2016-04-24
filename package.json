@@ -3,14 +3,17 @@
   "version": "0.0.1",
   "description": "cs4690 Class Project",
   "main": "siq.js",
+  "scripts": {
+    "start": "node siq.js"
+  },
   "dependencies": {
-    "morgan": "^1.7.0",
-    "mysql": "^2.10.2",
-    "compression": "^1.6.1",
-    "express": "^4.13.4",
-    "body-parser": "^1.15.0",
-    "underscore": "^1.8.3",
-    "serve-favicon": "^2.3.0",
-    "mongodb":"^2.1.14"
+    "morgan": "^1.x.x",
+    "mysql": "^2.x.x",
+    "compression": "^1.x.x",
+    "express": "^4.x.x",
+    "body-parser": "^1.x.x",
+    "underscore": "^1.x.x",
+    "serve-favicon": "x.x.x",
+    "mongodb":"^2.x.x"
   }
 }
