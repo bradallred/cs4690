@@ -7,7 +7,11 @@ var ENTRIES = WEB + 'entries/';
 //REST API V1 calls go here.
 router.get('/entries.json', function(req, res) {
   fs.readdir(ENTRIES, function(err, items) {
-    res.json(items);
+    if (err) {
+      res.json([]);
+    } else {
+      res.json(items);
+    }
   });
 });
 
