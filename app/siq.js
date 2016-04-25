@@ -26,14 +26,13 @@ app.use(compression());
 
 app.use(allowCrossDomain);
 
-var apiPath = '/api/v1';
+var apiPath = '/api/v1/';
 // mongo is primary, so publish it under 2 paths
 // this way we can acces and demonstrate the different DAOs with Postman
 var mongoDao = require('./DAO/mongoDao');
-app.use(apiPath + '/', mongoDao);
-app.use(apiPath + '/mongo', mongoDao);
-app.use(apiPath + '/mysql', require('./DAO/mysqlDao'));
-
+app.use(apiPath, mongoDao);
+app.use(apiPath + 'mongo/', mongoDao);
+app.use(apiPath + 'mysql/', require('./DAO/mysqlDao'));
 
 //traditional webserver stuff for serving static files
 var WEB = __dirname + '/web';

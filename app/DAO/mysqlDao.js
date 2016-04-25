@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 //REST API V1 calls go here.
-router.get('entries.json', function(req, res) {
+router.get('/entries.json', function(req, res) {
     connection.query('select id, subject from entries', function(err, rows, fields){
         if(err) throw err;
         res.status(200).json(rows);
@@ -22,7 +22,7 @@ router.get('entries.json', function(req, res) {
 
 // IDEMPOTENT - You can repeat the operation as many times as you want without changing state.
 // Create
-router.post('entries.json', function(req, res){
+router.post('/entries.json', function(req, res){
     // Store new entry and return id.
     console.log(req.body);
     // {"subject":"Something else","contents":"This is the contents for 'Something else'"}
@@ -36,7 +36,7 @@ router.post('entries.json', function(req, res){
 });
 
 // Read
-router.get('entries/:id.json', function(req, res){
+router.get('/entries/:id.json', function(req, res){
     var id = connection.escape(req.params.id);
     console.log(`select id, subject, contents from entries where id = ${id}`);
     connection.query(`select id, subject, contents from entries where id = ${id}`, function(err, row, fields){
@@ -46,7 +46,7 @@ router.get('entries/:id.json', function(req, res){
 });
 
 // Update
-router.put('entries/:id.json', function(req, res){
+router.put('/entries/:id.json', function(req, res){
     var id = connection.escape(req.params.id);
     var subject = connection.escape(req.body.subject);
     var contents = connection.escape(req.body.contents);
@@ -60,7 +60,7 @@ router.put('entries/:id.json', function(req, res){
 });
 
 // Delete
-router.delete('entries/:id', function(req, res){
+router.delete('/entries/:id', function(req, res){
     var id = connection.escape(req.params.id);
     connection.query(`delete from entries where id = ${id}`, function(err, rows, fields){
         if(err) throw err;
