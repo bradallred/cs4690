@@ -48,20 +48,4 @@ app.get('*', function(req, res) {
 var port = process.env.port || 8080;
 var server = app.listen(port);
 
-function gracefulShutdown(){
-    console.log('\nStarting Shutdown');
-    server.close(function(){
-        connection.end();
-        console.log('Shutdown complete.');
-    });
-}
-
-process.on('SIGTERM', function(){
-    gracefulShutdown();
-});
-
-process.on('SIGINT', function(){
-    gracefulShutdown();
-});
-
 console.log(`Listening on port ${port}`);

@@ -71,3 +71,19 @@ router.delete('entries/:id', function(req, res){
 
 module.export = router;
 // END API V1 METHODS
+
+function gracefulShutdown(){
+    console.log('\nStarting Shutdown');
+    server.close(function(){
+        connection.end();
+        console.log('Shutdown complete.');
+    });
+}
+
+process.on('SIGTERM', function(){
+    gracefulShutdown();
+});
+
+process.on('SIGINT', function(){
+    gracefulShutdown();
+});
