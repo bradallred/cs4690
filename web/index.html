@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="scripts/modal.js"></script>
-    
+
     <link rel="stylesheet" href="/css/siq.css">
   </head>
 
@@ -29,7 +29,7 @@
     <nav class="navbar navbar-custom">
       <div class="container-fluid">
         <div class="container">
-          
+
           <div class="row">
             <div class="navbar-header">
               <h3 class="navbar-text">SIQ</h3>
@@ -39,9 +39,9 @@
             <input type="search" class="form-control navbar-right" id="search" placeholder="Search" ng-model="siq.search"></input>
             <button id="undo" class="btn navbar-btn navbar-right" hidden ng-show="siq.undo.length > 0" ng-click="siq.Undo(); $event.stopPropagation()">Undo Delete <span class="badge">{{siq.undo.length}}</span></button>
           </div>
-        
+
         </div>
-        
+
       </div>
     </nav>
 
@@ -62,12 +62,12 @@
               <br/>
               <div class="entry-body" ng-show="siq.panelNum == $index">{{entry.content}}</div>
             </div>
-          
+
         </div>
       </div>
-      
+
       <div class="row">
-        
+
       </div>
 
       <!-- Modal -->
@@ -88,7 +88,7 @@
                 <div class="form-group">
                   <textarea id="content" class="form-control" rows="3" placeholder="Content" ng-model="siq.siqContent"></textarea>
                 </div>
-                
+
               </form>
             </div>
           </div>
