@@ -4,7 +4,7 @@ var mongo = require('mongodb');
 var mongoClient = mongo.MongoClient;
 
 // REST API V2 calls go here.
-router.get('/api/v2/entries.json', function(req, res) {
+router.get('entries.json', function(req, res) {
     mongoClient.connect('mongodb://mongo:27017/test', function(err, db) {
         if (err) {
             throw err;
@@ -20,7 +20,7 @@ router.get('/api/v2/entries.json', function(req, res) {
 });
 
 // Create
-router.post('/api/v2/entries.json', function(req, res){
+router.post('entries.json', function(req, res){
     // Store new entry and return id.
     console.log(req.body);
     // {"subject":"Something else","content":"This is the contents for 'Something else'"}
@@ -43,7 +43,7 @@ router.post('/api/v2/entries.json', function(req, res){
 });
 
 // Read
-router.get('/api/v2/entries/:id.json', function(req, res){
+router.get('entries/:id.json', function(req, res){
     var id = new mongo.ObjectId(req.params.id);
 
     mongoClient.connect('mongodb://mongo:27017/test', function(err, db) {
@@ -65,7 +65,7 @@ router.get('/api/v2/entries/:id.json', function(req, res){
 });
 
 // Update
-router.put('/api/v2/entries/:id.json', function(req, res){
+router.put('entries/:id.json', function(req, res){
     var object = {};
     var id = new mongo.ObjectId(req.params.id);
     var subject = req.body.subject;
@@ -92,7 +92,7 @@ router.put('/api/v2/entries/:id.json', function(req, res){
 });
 
 // Delete
-router.delete('/api/v2/entries/:id', function(req, res){
+router.delete('entries/:id', function(req, res){
     var id = new mongo.ObjectId(req.params.id);
 
     mongoClient.connect('mongodb://mongo:27017/test', function(err, db) {

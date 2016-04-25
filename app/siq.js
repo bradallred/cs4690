@@ -1,8 +1,6 @@
 console.log('Loading Server');
 var fs = require('fs');
 var express = require('express');
-var mongoDao = require('./mongoDao');
-//var mysqlDao = require('./mysqlDao');
 
 //modules below are express middleware
 var bodyParser = require('body-parser');
@@ -28,8 +26,13 @@ app.use(compression());
 
 app.use(allowCrossDomain);
 
-app.use('/', mongoDao);
-//app.use('/', mysqlDao);
+var apiPath = '/api/v1';
+// mongo is primary, so publish it under 2 paths
+// this way we can acces and demonstrate the different DAOs with Postman
+var mongoDao = require('./DAO/mongoDao');
+app.use(apiPath + '/', mongoDao);
+app.use(apiPath + '/mongo', mongoDao);
+app.use(apiPath + '/mysql', require('./DAO/mysqlDao'));
 
 
 //traditional webserver stuff for serving static files
