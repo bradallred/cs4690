@@ -4,7 +4,7 @@ app.controller('siqController', function($scope, $http){
 	var siq = this;
 	siq.undo = [];
 
-	$http.get('/api/v2/entries.json')
+	$http.get('/api/v1/entries.json')
 		.then(function(response){
 			siq.data = response.data;
 		});
@@ -32,7 +32,7 @@ app.controller('siqController', function($scope, $http){
 		var id = siq.data[index]._id;
 		console.log('getting entry ' + id);
 
-		$http.get('/api/v2/entries/' + id + '.json')
+		$http.get('/api/v1/entries/' + id + '.json')
 			.then(function(response){
 				siq.data[index] = response.data;
 			});
@@ -46,7 +46,7 @@ app.controller('siqController', function($scope, $http){
 		entry.content = content;
 		siq.data[index] = entry;
 		siq.clear();
-		$http.put('/api/v2/entries/' + id + '.json', entry)
+		$http.put('/api/v1/entries/' + id + '.json', entry)
 			.then(function(response){
 				console.log("update finished with status '" + response.data + "'");
 			});
@@ -57,7 +57,7 @@ app.controller('siqController', function($scope, $http){
 		var id = siq.data[index]._id;
 		var element = siq.data.splice(index, 1)[0];
 
-		$http.get('/api/v2/entries/' + id + '.json')
+		$http.get('/api/v1/entries/' + id + '.json')
 			.then(function(response){
 				element = response.data;
 				element.index = index;
@@ -65,7 +65,7 @@ app.controller('siqController', function($scope, $http){
 			});
 
 		siq.panelNum = -1;
-		$http.delete('/api/v2/entries/' + id)
+		$http.delete('/api/v1/entries/' + id)
 			.then(function(response){
 				console.log("delete finished with status '" + response.data + "'");
 			});
@@ -78,7 +78,7 @@ app.controller('siqController', function($scope, $http){
 		entry.content = content;
 		siq.clear();
 		console.log(entry);
-		$http.post('/api/v2/entries.json', entry)
+		$http.post('/api/v1/entries.json', entry)
 			.then(function(res){
 				console.log(`success:${res.data}`);
 				entry._id = res.data;

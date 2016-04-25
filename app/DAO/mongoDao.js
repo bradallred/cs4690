@@ -3,7 +3,7 @@ var router = express.Router();
 var mongo = require('mongodb');
 var mongoClient = mongo.MongoClient;
 
-// REST API V2 calls go here.
+// REST API v1 calls go here.
 router.get('entries.json', function(req, res) {
     mongoClient.connect('mongodb://mongo:27017/test', function(err, db) {
         if (err) {
@@ -114,4 +114,4 @@ router.delete('entries/:id', function(req, res){
 });
 
 module.exports = router;
-// END REAST API V2 CALLS.
+// END REAST API v1 CALLS.
