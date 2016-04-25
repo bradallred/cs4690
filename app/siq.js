@@ -33,6 +33,7 @@ var mongoDao = require('./DAO/mongoDao');
 app.use(apiPath, mongoDao);
 app.use(apiPath + 'mongo/', mongoDao);
 app.use(apiPath + 'mysql/', require('./DAO/mysqlDao'));
+app.use(apiPath + 'fs/', require('./DAO/fsDao'));
 
 //traditional webserver stuff for serving static files
 var WEB = __dirname + '/web';
