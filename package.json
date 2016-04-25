@@ -2,9 +2,9 @@
   "name": "cs4690",
   "version": "0.0.1",
   "description": "cs4690 Class Project",
-  "main": "siq.js",
+  "main": "app/iq.js",
   "scripts": {
-    "start": "node siq.js"
+    "start": "node app/siq.js"
   },
   "dependencies": {
     "morgan": "^1.x.x",
