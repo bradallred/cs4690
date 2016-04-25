@@ -4,9 +4,9 @@ var mysql = require('mysql');
 var router = express.Router();
 
 var connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'mysql',
     user: 'root',
-    password: 'root',
+    password: 'pass',
     database: 'siq'
 });
 
@@ -69,7 +69,7 @@ router.delete('/entries/:id', function(req, res){
     res.sendStatus(204);
 });
 
-module.export = router;
+module.exports = router;
 // END API V1 METHODS
 
 function gracefulShutdown(){
