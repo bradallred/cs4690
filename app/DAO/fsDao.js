@@ -1,8 +1,15 @@
 var fs = require('fs');
 var router = require('express').Router();
 
-var WEB = __dirname + '/web/';
-var ENTRIES = WEB + 'entries/';
+// make the entries directory if it doesnt exist
+// do this synchonously so it is ready before accepting requests
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+var ENTRIES = appDir + '/web/entries/';
+
+if (!fs.existsSync(ENTRIES)) {
+  fs.mkdirSync(ENTRIES);
+}
 
 //REST API V1 calls go here.
 router.get('/entries.json', function(req, res) {
