@@ -53,14 +53,18 @@
               <div class="entry-heading" ng-click="siq.getEntry($index)">
                 <span class="arrow glyphicon glyphicon-menu-right" ng-show="siq.panelNum != $index"></span>
                 <span class="arrow glyphicon glyphicon-menu-down" ng-show="siq.panelNum == $index"></span>
-                <span class="clickable">{{entry.subject}}</span>
+                <span class="clickable" ng-mouseover="Speek(entry.subject)">
+                  {{entry.subject}}
+                </span>
                 <span class="pull-right">
                   <span class="edit-icon glyphicon glyphicon-pencil clickable" title="Edit Entry" data-toggle="modal" data-target="#upsertModal" ng-click="siq.editClick($index)"></span>
                   <span class="del-icon glyphicon glyphicon-trash clickable" title="Delete Entry" ng-click="siq.deleteEntry($index)"></span>
                 </span>
               </div>
               <br/>
-              <div class="entry-body" ng-show="siq.panelNum == $index">{{entry.content}}</div>
+              <div class="entry-body" ng-show="siq.panelNum == $index" ng-mouseover="Speek(entry.content)">
+                {{entry.content}}
+              </div>
             </div>
 
         </div>

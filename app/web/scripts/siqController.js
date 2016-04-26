@@ -1,4 +1,5 @@
 var app = angular.module('siqApp', []);
+
 app.controller('siqController', function($scope, $http){
 
 	var siq = this;
@@ -97,4 +98,11 @@ app.controller('siqController', function($scope, $http){
 		siq.siqContent = "";
 		siq.siqSubject = "";
 	};
+
+	$scope.Speek = function(text) {
+		if (window.speechSynthesis) {
+			var speaker = new SpeechSynthesisUtterance(text);
+			speechSynthesis.speak(speaker);
+		}
+	}
 });
